@@ -1,0 +1,42 @@
+{
+  "name": "handy-tools",
+  "version": "0.0.1",
+  "private": false,
+  "author": "dastasoft <dastasoft@protonmail.com> (https://dastasoft.com)",
+  "license": "MIT",
+  "description": "",
+  "scripts": {
+    "build": "next build",
+    "deploy": "next build && next export",
+    "dev": "next dev",
+    "export": "next export",
+    "lint": "eslint . --fix",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.1.1",
+    "next-pwa": "^5.0.6",
+    "next-seo": "^4.23.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.23.1",
+    "lint-staged": ">=10",
+    "prettier": "^2.2.1",
+    "simple-git-hooks": ">=2.0.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
+}
