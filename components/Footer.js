@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/react'
+import { Flex, Link } from '@chakra-ui/react'
 
 const Footer = ({ h }) => {
   return (
-    <Box bg="black" h={h}>
-      footer
-    </Box>
+    <Flex justify="flex-end" align="center" paddingX="1rem" bg="black" h={h}>
+      <Link href="https://dastasoft.com">dastasoft</Link>
+    </Flex>
   )
 }
 

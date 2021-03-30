@@ -7,10 +7,10 @@ const Layout = ({ children }) => {
   return (
     <Flex color="white" direction="column" h="100%">
       <Header h="4rem" />
-      <Box color="black" flex="1">
+      <Box color="black" flex="1" padding="1rem 2rem" margin="0 auto">
         {children}
       </Box>
-      <Footer h="2.5rem" />
+      <Footer h="3rem" />
     </Flex>
   )
 }

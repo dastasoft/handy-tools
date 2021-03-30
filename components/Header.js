@@ -22,7 +22,7 @@ const Header = ({ h }) => {
       h={h}
       justify="space-between"
       align="center"
-      paddingX="1rem"
+      paddingLeft="1rem"
     >
       <Flex align="center">
         <Icon
