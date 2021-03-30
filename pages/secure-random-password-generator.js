@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Checkbox,
   Box,
@@ -12,33 +11,59 @@ import {
   SliderThumb,
 } from '@chakra-ui/react'
 
+import usePasswordGenerator from '@/hooks/usePasswordGenerator'
+
 const SecureRandomPasswordGenerator = () => {
-  const [password, setPassword] = useState('')
-  const [length, setLenght] = useState(128)
-  const [uppercase, setUppercase] = useState(true)
-  const [lowercase, setLowercase] = useState(true)
-  const [numerical, setNumerical] = useState(true)
-  const [symbols, setSymbols] = useState(true)
+  const {
+    MIN_PASSWORD_LENGHT,
+    MAX_PASSWORD_LENGTH,
+    password,
+    length,
+    setLenght,
+    uppercase,
+    setUppercase,
+    lowercase,
+    setLowercase,
+    numerical,
+    setNumerical,
+    symbols,
+    setSymbols,
+    generatePassword,
+  } = usePasswordGenerator()
 
   const onCopy = () => {
     navigator.clipboard.writeText(password)
   }
 
   const onRegenerate = () => {
-    setPassword(Math.floor(Math.random(0, 100) * 100))
+    generatePassword()
+  }
+
+  const onSlide = value => {
+    if (value !== length) {
+      setLenght(value)
+      generatePassword()
+    }
   }
 
   return (
-    <Box>
-      <Heading as="h2" size="lg" marginY="1rem">
-        Secure Random Password Generator
+    <Box
+      bg="teal.100"
+      padding="1rem 2rem"
+      borderRadius="5px"
+      maxW="30rem"
+      margin="1rem auto"
+    >
+      <Heading as="h2" size="lg" marginY="1rem" align="center">
+        Password Generator
       </Heading>
-      <Box border="2px solid black" padding="1rem" borderRadius="5px">
+      <Box>
         <Text
           fontSize="xl"
           minH="3.9rem"
+          maxW="100%"
           textAlign="center"
-          bg="gray.300"
+          bg="white"
           borderRadius="5px"
           padding="1rem"
         >
@@ -49,7 +74,7 @@ const SecureRandomPasswordGenerator = () => {
             Copy
           </Button>
           <Button colorScheme="teal" onClick={onRegenerate}>
-            Regenerate
+            Generate
           </Button>
         </Flex>
         <Flex justify="space-between" paddingY="1rem" align="center">
@@ -61,12 +86,12 @@ const SecureRandomPasswordGenerator = () => {
           </Flex>
           <Slider
             aria-label="slider-ex-1"
-            min={5}
-            max={128}
-            step={1}
+            min={MIN_PASSWORD_LENGHT}
+            max={MAX_PASSWORD_LENGTH}
             defaultValue={length}
             value={length}
-            onChange={value => setLenght(value)}
+            onChange={onSlide}
+            onChangeEnd={onSlide}
             maxW="8rem"
           >
             <SliderTrack>

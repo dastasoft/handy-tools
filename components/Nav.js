@@ -1,14 +1,18 @@
 import NextLink from 'next/link'
-import { Flex, Link } from '@chakra-ui/react'
+import { Flex, Link, Text } from '@chakra-ui/react'
 
 const Nav = ({ onClose }) => {
   return (
-    <Flex direction="column">
+    <Flex direction="column" align="center">
       <NextLink href="/">
-        <Link onClick={onClose}>Home</Link>
+        <Link marginY="1rem" padding="1rem" onClick={onClose}>
+          <Text fontSize="3xl">Home</Text>
+        </Link>
       </NextLink>
       <NextLink href="/secure-random-password-generator">
-        <Link onClick={onClose}>Secure Random Password Generator</Link>
+        <Link marginY="1rem" padding="1rem" onClick={onClose}>
+          <Text fontSize="3xl">Password Generator</Text>
+        </Link>
       </NextLink>
     </Flex>
   )
