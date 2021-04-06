@@ -60,7 +60,7 @@ const SecureRandomPasswordGenerator = () => {
       <Box>
         <Text
           fontSize="xl"
-          minH="3.9rem"
+          h="11rem"
           maxW="100%"
           textAlign="center"
           bg="white"
