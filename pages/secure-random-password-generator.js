@@ -54,13 +54,13 @@ const SecureRandomPasswordGenerator = () => {
       maxW="30rem"
       margin="1rem auto"
     >
-      <Heading as="h2" size="lg" marginY="1rem" align="center">
+      <Heading as="h2" size="lg" marginTop="1rem" align="center">
         Password Generator
       </Heading>
       <Box>
         <Text
           fontSize="xl"
-          h="11rem"
+          h="14rem"
           maxW="100%"
           textAlign="center"
           bg="white"

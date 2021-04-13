@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 const Layout = ({ children }) => {
   return (
-    <Flex color="white" direction="column" h="100%">
+    <Flex color="white" direction="column" minH="100%">
       <Header h="4rem" />
       <Box
         color="black"

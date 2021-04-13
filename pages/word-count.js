@@ -1,4 +1,11 @@
-import { SimpleGrid, Flex, Heading, Textarea } from '@chakra-ui/react'
+import {
+  SimpleGrid,
+  Flex,
+  Text,
+  Heading,
+  Textarea,
+  Box,
+} from '@chakra-ui/react'
 
 import WordCounter from '@/components/WordCounters'
 import useWordCount from '@/hooks/useWordCount'
@@ -10,6 +17,7 @@ const WordCount = () => {
     wordCount,
     sentenceCount,
     paragraphCount,
+    mostUsedWord,
     handleTextChange,
   } = useWordCount()
 
@@ -37,6 +45,24 @@ const WordCount = () => {
         shadow="lg"
         onChange={e => handleTextChange(e.target.value)}
       />
+      <Box
+        margin="1rem auto"
+        padding="1rem"
+        bg="white"
+        width="100%"
+        shadow="lg"
+        borderRadius="3px"
+      >
+        <Heading fontSize="1rem">Repeated Words</Heading>
+        <Box marginTop="1rem">
+          {mostUsedWord.map(({ count, word }) => (
+            <Flex key={word}>
+              <Text marginRight="0.5rem">{word}:</Text>
+              <Text>{count}</Text>
+            </Flex>
+          ))}
+        </Box>
+      </Box>
     </Flex>
   )
 }
