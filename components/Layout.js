@@ -10,9 +10,10 @@ const Layout = ({ children }) => {
       <Box
         color="black"
         flex="1"
-        padding="1rem 2rem"
+        padding="1rem"
         margin="0 auto"
         width="100%"
+        backgroundColor="linkedin.100"
       >
         {children}
       </Box>

@@ -48,7 +48,7 @@ const SecureRandomPasswordGenerator = () => {
 
   return (
     <Box
-      bg="teal.100"
+      bg="white"
       padding="1rem 2rem"
       borderRadius="5px"
       maxW="30rem"
