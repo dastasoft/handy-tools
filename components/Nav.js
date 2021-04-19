@@ -1,23 +1,21 @@
-import NextLink from 'next/link'
-import { Flex, Link, Text } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 
 import { links } from '@/lib/constants'
-
-const generateLink = onClose => ({ href, title }) => (
-  <NextLink href={href}>
-    <Link marginY="1rem" padding="1rem" onClick={onClose}>
-      <Text fontSize={['2xl', '3xl']} fontWeight="bold">
-        {title}
-      </Text>
-    </Link>
-  </NextLink>
-)
+import SectionItem from './SectionItem'
 
 const Nav = ({ onClose }) => {
   return (
-    <Flex direction="column" alignItems="center">
-      {links.map(link => generateLink(onClose)(link))}
-    </Flex>
+    <SimpleGrid width="100%" gap={8} minChildWidth="21rem">
+      {links.map(link => (
+        <SectionItem
+          key={link.title}
+          img={link.thumbnail}
+          title={link.title}
+          link={link.href}
+          onClick={onClose}
+        />
+      ))}
+    </SimpleGrid>
   )
 }
 

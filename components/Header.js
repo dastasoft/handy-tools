@@ -13,11 +13,13 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 import Nav from '@/components/Nav'
 
 const Header = ({ h }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const router = useRouter()
 
   return (
     <Flex
@@ -28,7 +30,7 @@ const Header = ({ h }) => {
       paddingLeft="1rem"
     >
       <Link as={NextLink} href="/">
-        <Flex align="center">
+        <Flex align="center" cursor="pointer">
           <Icon
             viewBox="0 0 512 512"
             height="2rem"
@@ -43,21 +45,25 @@ const Header = ({ h }) => {
           <Heading>Handy Tools</Heading>
         </Flex>
       </Link>
-      <Button variant="ghost" onClick={onOpen}>
-        <HamburgerIcon w={8} h={8} />
-      </Button>
-      <Drawer onClose={onClose} isOpen={isOpen} size="full">
-        <DrawerOverlay>
-          <DrawerContent bgGradient="linear(to-b, linkedin.300, linkedin.900)">
-            <DrawerHeader>
-              Navigation <DrawerCloseButton />
-            </DrawerHeader>
-            <DrawerBody>
-              <Nav onClose={onClose} />
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+      {router.route !== '/' && (
+        <>
+          <Button variant="ghost" onClick={onOpen}>
+            <HamburgerIcon w={8} h={8} />
+          </Button>
+          <Drawer onClose={onClose} isOpen={isOpen} size="full">
+            <DrawerOverlay>
+              <DrawerContent bgGradient="linear(to-b, linkedin.300, linkedin.900)">
+                <DrawerHeader>
+                  Navigation <DrawerCloseButton />
+                </DrawerHeader>
+                <DrawerBody>
+                  <Nav onClose={onClose} />
+                </DrawerBody>
+              </DrawerContent>
+            </DrawerOverlay>
+          </Drawer>
+        </>
+      )}
     </Flex>
   )
 }

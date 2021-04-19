@@ -1539,16 +1539,6 @@
   resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.2.2.tgz#e0e592180bf7f2276190b4448aea2feaac888d1f"
   integrity sha512-ZE5WvqZQZinXpH8MaEiM9klDsUOfCHVQJ/tZKpNVQhi8mHt9WqPCROu500oI5jC3s6jaJuWsM7LfJ1zyEeW+XA==
 
-"@fontsource/open-sans@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.2.2.tgz#59046f772136a44c5999e0189d33c6a26676630c"
-  integrity sha512-NbsL1a9asJO6N/5kRxYPCy0kNhKMi9T75kl4QfIGtmpd/5IfB+UIAUxd9AICmCLaH4Osc2TImeTJj94xc9MNKg==
-
-"@fontsource/raleway@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/raleway/-/raleway-4.2.2.tgz#f783d5ed483789e999dadef633347ce8173ce68a"
-  integrity sha512-hRtk9NJpCpI3ru8EZdyWvS212Nx1UoHS52AwVxV/ltgfxYamLv7GurwcWzRNRuY3gi9c6PzErJQXyifFkxiHLQ==
-
 "@fontsource/roboto@^4.2.3":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.2.3.tgz#2d2c173c526073a2c8d22f1c4234eef7496183fb"
