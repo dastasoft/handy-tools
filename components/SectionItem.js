@@ -18,7 +18,7 @@ export default function SectionItem({ img, title, link, onClick }) {
           cursor="pointer"
         >
           {img && <Image src={img} alt={title} />}
-          <Heading fontSize="2xl" fontWeight="bold">
+          <Heading fontSize="2xl" fontWeight="bold" textAlign="center">
             {title}
           </Heading>
         </Flex>
