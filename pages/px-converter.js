@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Box,
   Select,
@@ -15,11 +14,11 @@ import {
 } from '@chakra-ui/react'
 import { ArrowLeftIcon, CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons'
 
+import usePxConverter from '@/hooks/usePxConverter'
+
 const OPTIONS = Object.freeze({
   pxToREM: 'PX to REM',
   pxToEm: 'PX to EM',
-  RemToPx: 'REM to PX',
-  EmToPx: 'EM to PX',
 })
 
 function EditableControls() {
@@ -43,51 +42,36 @@ function EditableControls() {
 }
 
 export default function PxConverter() {
-  const [option, setOption] = useState('pxToREM')
-  const [px, setPx] = useState(0)
-  const [rem, setRem] = useState(0)
-  const [em, setEm] = useState(0)
-  const [fontBase, setFontBase] = useState(16)
-
-  const onOptionChange = event => setOption(event.target.value)
-
-  const onPxChange = event => {
-    const { value: newPxValue } = event.target
-
-    setPx(newPxValue)
-    setRem(newPxValue / fontBase)
-  }
-
-  const onRemChange = event => {
-    const { value: newRemValue } = event.target
-
-    setRem(newRemValue)
-    setPx(newRemValue * fontBase)
-  }
-
-  const onEmChange = event => {
-    const { value: newEmValue } = event.target
-
-    setEm(newEmValue)
-    setPx(newEmValue * fontBase)
-  }
-
-  const onFontBaseChange = newFontBase => {
-    setFontBase(newFontBase)
-    setRem(rem / newFontBase)
-  }
+  const {
+    onOptionChange,
+    px,
+    onPxChange,
+    option,
+    rem,
+    onRemChange,
+    em,
+    onEmChange,
+    fontBase,
+    onFontBaseChange,
+  } = usePxConverter()
 
   return (
     <Box>
       <Heading marginBottom="0.5em">Px Converter</Heading>
-      <Select bg="white" onChange={onOptionChange} defaultValue="pxToREM">
+      <Select
+        onChange={onOptionChange}
+        defaultValue="pxToREM"
+        bg="white"
+        maxWidth="600px"
+        margin="0 auto"
+      >
         {Object.keys(OPTIONS).map(optionKey => (
           <option key={optionKey} value={optionKey}>
             {OPTIONS[optionKey]}
           </option>
         ))}
       </Select>
-      <Flex justifyContent="space-between" alignItems="center" marginY="1em">
+      <Flex justifyContent="center" alignItems="center" marginY="1em">
         <Flex alignItems="center" marginX="1em">
           <Input
             type="number"
@@ -100,8 +84,7 @@ export default function PxConverter() {
           <Text>PX</Text>
         </Flex>
         <ArrowLeftIcon />
-        {(OPTIONS[option] === OPTIONS.pxToREM ||
-          OPTIONS[option] === OPTIONS.RemToPx) && (
+        {OPTIONS[option] === OPTIONS.pxToREM && (
           <Flex alignItems="center" marginX="1em">
             <Input
               type="number"
@@ -114,8 +97,7 @@ export default function PxConverter() {
             <Text>REM</Text>
           </Flex>
         )}
-        {(OPTIONS[option] === OPTIONS.pxToEm ||
-          OPTIONS[option] === OPTIONS.EmToPx) && (
+        {OPTIONS[option] === OPTIONS.pxToEm && (
           <Flex alignItems="center" marginX="1em">
             <Input
               type="number"
@@ -132,12 +114,7 @@ export default function PxConverter() {
       <Flex alignItems="center" justifyContent="center">
         <Text>
           Using a{' '}
-          <b>
-            {OPTIONS[option] === OPTIONS.pxToEm ||
-            OPTIONS[option] === OPTIONS.EmToPx
-              ? 'parent'
-              : 'root'}
-          </b>{' '}
+          <b>{OPTIONS[option] === OPTIONS.pxToEm ? 'parent' : 'root'}</b>{' '}
           font-base of{' '}
         </Text>
         <Editable value={fontBase} onChange={onFontBaseChange}>

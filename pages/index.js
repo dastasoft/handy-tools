@@ -5,7 +5,7 @@ import { links } from '@/lib/constants'
 
 export default function Home() {
   return (
-    <SimpleGrid width="100%" gap={8} minChildWidth="21rem">
+    <SimpleGrid width="100%" gap={8} minChildWidth="21rem" gridAutoRows="1fr">
       {links
         .filter(link => link.href !== '/')
         .map(link => (

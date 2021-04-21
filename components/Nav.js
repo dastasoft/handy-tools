@@ -5,7 +5,7 @@ import SectionItem from './SectionItem'
 
 const Nav = ({ onClose }) => {
   return (
-    <SimpleGrid width="100%" gap={8} minChildWidth="11rem">
+    <SimpleGrid width="100%" gap={8} minChildWidth="11rem" gridAutoRows="1fr">
       {links.map(link => (
         <SectionItem
           key={link.title}
