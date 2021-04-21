@@ -11,15 +11,13 @@ import {
   useEditableControls,
   ButtonGroup,
   IconButton,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react'
-import { ArrowLeftIcon, CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons'
+import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons'
+import NextImage from 'next/image'
 
 import usePxConverter from '@/hooks/usePxConverter'
-
-const OPTIONS = Object.freeze({
-  pxToREM: 'PX to REM',
-  pxToEm: 'PX to EM',
-})
 
 function EditableControls() {
   const {
@@ -43,16 +41,18 @@ function EditableControls() {
 
 export default function PxConverter() {
   const {
-    onOptionChange,
-    px,
-    onPxChange,
-    option,
-    rem,
-    onRemChange,
     em,
-    onEmChange,
     fontBase,
+    onEmChange,
     onFontBaseChange,
+    onOptionChange,
+    onPxChange,
+    onRemChange,
+    option,
+    options,
+    px,
+    rem,
+    swapInputs,
   } = usePxConverter()
 
   return (
@@ -65,14 +65,26 @@ export default function PxConverter() {
         maxWidth="600px"
         margin="0 auto"
       >
-        {Object.keys(OPTIONS).map(optionKey => (
+        {Object.keys(options).map(optionKey => (
           <option key={optionKey} value={optionKey}>
-            {OPTIONS[optionKey]}
+            {options[optionKey]}
           </option>
         ))}
       </Select>
-      <Flex justifyContent="center" alignItems="center" marginY="1em">
-        <Flex alignItems="center" marginX="1em">
+      <Grid
+        templateAreas={
+          option === 'PX_REM' || option === 'PX_EM'
+            ? "'px icon relative'"
+            : "'relative icon px'"
+        }
+        marginY="1em"
+      >
+        <GridItem
+          display="flex"
+          gridArea="px"
+          alignItems="center"
+          marginX="1em"
+        >
           <Input
             type="number"
             name="px"
@@ -82,10 +94,23 @@ export default function PxConverter() {
             onChange={onPxChange}
           />
           <Text>PX</Text>
-        </Flex>
-        <ArrowLeftIcon />
-        {OPTIONS[option] === OPTIONS.pxToREM && (
-          <Flex alignItems="center" marginX="1em">
+        </GridItem>
+        <GridItem justifySelf="center" alignSelf="center" gridArea="icon">
+          <Box cursor="pointer" onClick={swapInputs}>
+            <NextImage
+              src="/images/exchange-alt-solid.svg"
+              width={20}
+              height={20}
+            />
+          </Box>
+        </GridItem>
+        {(option === 'PX_REM' || option === 'REM_PX') && (
+          <GridItem
+            display="flex"
+            gridArea="relative"
+            alignItems="center"
+            marginX="1em"
+          >
             <Input
               type="number"
               name="rem"
@@ -95,10 +120,15 @@ export default function PxConverter() {
               onChange={onRemChange}
             />
             <Text>REM</Text>
-          </Flex>
+          </GridItem>
         )}
-        {OPTIONS[option] === OPTIONS.pxToEm && (
-          <Flex alignItems="center" marginX="1em">
+        {(option === 'PX_EM' || option === 'EM_PX') && (
+          <GridItem
+            display="flex"
+            gridArea="relative"
+            alignItems="center"
+            marginX="1em"
+          >
             <Input
               type="number"
               name="em"
@@ -108,14 +138,16 @@ export default function PxConverter() {
               onChange={onEmChange}
             />
             <Text>EM</Text>
-          </Flex>
+          </GridItem>
         )}
-      </Flex>
-      <Flex alignItems="center" justifyContent="center">
+      </Grid>
+      <Flex
+        display={option === 'PX_REM' || option === 'PX_EM' ? 'flex' : 'none'}
+        alignItems="center"
+        justifyContent="center"
+      >
         <Text>
-          Using a{' '}
-          <b>{OPTIONS[option] === OPTIONS.pxToEm ? 'parent' : 'root'}</b>{' '}
-          font-base of{' '}
+          Using a <b>{option === 'PX_EM' ? 'parent' : 'root'}</b> font-base of{' '}
         </Text>
         <Editable value={fontBase} onChange={onFontBaseChange}>
           <Flex alignItems="center" marginLeft="0.2em">
