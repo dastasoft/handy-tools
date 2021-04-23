@@ -28,12 +28,12 @@ function EditableControls() {
   } = useEditableControls()
 
   return isEditing ? (
-    <ButtonGroup justifyContent="center" size="sm" marginX="0.5em">
+    <ButtonGroup {...styles.buttonGroup}>
       <IconButton icon={<CheckIcon />} {...getSubmitButtonProps()} />
       <IconButton icon={<CloseIcon />} {...getCancelButtonProps()} />
     </ButtonGroup>
   ) : (
-    <Flex justifyContent="center" marginX="0.3em">
+    <Flex {...styles.flexCenter} marginX="0.3em">
       <IconButton size="sm" icon={<EditIcon />} {...getEditButtonProps()} />
     </Flex>
   )
@@ -57,13 +57,11 @@ export default function PxConverter() {
 
   return (
     <Box>
-      <Heading marginBottom="0.5em">Px Converter</Heading>
+      <Heading {...styles.heading}>Px Converter</Heading>
       <Select
         onChange={onOptionChange}
         defaultValue="pxToREM"
-        bg="white"
-        maxWidth="600px"
-        margin="0 auto"
+        {...styles.select}
       >
         {Object.keys(options).map(optionKey => (
           <option key={optionKey} value={optionKey}>
@@ -77,21 +75,15 @@ export default function PxConverter() {
             ? "'px icon relative'"
             : "'relative icon px'"
         }
-        marginY="1em"
+        {...styles.grid}
       >
-        <GridItem
-          display="flex"
-          gridArea="px"
-          alignItems="center"
-          marginX="1em"
-        >
+        <GridItem gridArea="px" {...styles.gridItem}>
           <Input
             type="number"
             name="px"
-            bg="white"
-            marginRight="0.5em"
             value={px}
             onChange={onPxChange}
+            {...styles.input}
           />
           <Text>PX</Text>
         </GridItem>
@@ -105,37 +97,25 @@ export default function PxConverter() {
           </Box>
         </GridItem>
         {(option === 'PX_REM' || option === 'REM_PX') && (
-          <GridItem
-            display="flex"
-            gridArea="relative"
-            alignItems="center"
-            marginX="1em"
-          >
+          <GridItem gridArea="relative" al {...styles.gridItem}>
             <Input
               type="number"
               name="rem"
-              bg="white"
-              marginRight="0.5em"
               value={rem}
               onChange={onRemChange}
+              {...styles.input}
             />
             <Text>REM</Text>
           </GridItem>
         )}
         {(option === 'PX_EM' || option === 'EM_PX') && (
-          <GridItem
-            display="flex"
-            gridArea="relative"
-            alignItems="center"
-            marginX="1em"
-          >
+          <GridItem gridArea="relative" {...styles.gridItem}>
             <Input
               type="number"
               name="em"
-              bg="white"
-              marginRight="0.5em"
               value={em}
               onChange={onEmChange}
+              {...styles.input}
             />
             <Text>EM</Text>
           </GridItem>
@@ -143,14 +123,13 @@ export default function PxConverter() {
       </Grid>
       <Flex
         display={option === 'PX_REM' || option === 'PX_EM' ? 'flex' : 'none'}
-        alignItems="center"
-        justifyContent="center"
+        {...styles.flexCenter}
       >
         <Text>
           Using a <b>{option === 'PX_EM' ? 'parent' : 'root'}</b> font-base of{' '}
         </Text>
         <Editable value={fontBase} onChange={onFontBaseChange}>
-          <Flex alignItems="center" marginLeft="0.2em">
+          <Flex {...styles.flex}>
             <EditablePreview />
             <EditableInput />
             <EditableControls />
@@ -160,4 +139,41 @@ export default function PxConverter() {
       </Flex>
     </Box>
   )
+}
+
+const styles = {
+  heading: {
+    marginBottom: '0.5em',
+  },
+  flex: {
+    alignItems: 'center',
+    marginLeft: '0.2em',
+  },
+  flexCenter: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
+    bg: 'white',
+    marginRight: '0.5em',
+  },
+  select: {
+    bg: 'white',
+    maxWidth: '400px',
+    margin: '0 auto',
+  },
+  grid: {
+    maxWidth: '600px',
+    margin: '1.5em auto',
+  },
+  gridItem: {
+    display: 'flex',
+    alignItems: 'center',
+    marginX: '1em',
+  },
+  buttonGroup: {
+    justifyContent: 'center',
+    size: 'sm',
+    marginX: '0.5em',
+  },
 }
