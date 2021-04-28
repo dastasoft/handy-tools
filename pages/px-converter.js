@@ -154,11 +154,11 @@ const styles = {
     alignItems: 'center',
   },
   input: {
-    bg: 'white',
+    bg: 'whiteAlpha.900',
     marginRight: '0.5em',
   },
   select: {
-    bg: 'white',
+    bg: 'whiteAlpha.900',
     maxWidth: '400px',
     margin: '0 auto',
   },

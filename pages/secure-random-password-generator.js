@@ -9,6 +9,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  useColorModeValue,
 } from '@chakra-ui/react'
 
 import usePasswordGenerator from '@/hooks/usePasswordGenerator'
@@ -30,6 +31,7 @@ const SecureRandomPasswordGenerator = () => {
     setSymbols,
     generatePassword,
   } = usePasswordGenerator()
+  const bg = useColorModeValue('whiteAlpha.900', 'gray.800')
 
   const onCopy = () => {
     navigator.clipboard.writeText(password)
@@ -48,11 +50,12 @@ const SecureRandomPasswordGenerator = () => {
 
   return (
     <Box
-      bg="white"
+      bg={bg}
       padding="1rem 2rem"
       borderRadius="5px"
       maxW="30rem"
       margin="1rem auto"
+      shadow="lg"
     >
       <Heading as="h2" size="lg" marginTop="1rem" align="center">
         Password Generator
@@ -63,7 +66,7 @@ const SecureRandomPasswordGenerator = () => {
           h="14rem"
           maxW="100%"
           textAlign="center"
-          bg="white"
+          bg={bg}
           borderRadius="5px"
           padding="1rem"
         >

@@ -11,7 +11,7 @@ export default function SectionItem({ img, title, link, onClick }) {
           justifyContent="space-between"
           padding="1em"
           borderRadius="8px"
-          border="1px solid white"
+          border="1px solid whiteAlpha.900"
           width="100%"
           height="100%"
           shadow="xl"
