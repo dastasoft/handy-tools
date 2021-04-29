@@ -1,0 +1,74 @@
+{
+  "background_color": "#6da34d",
+  "description": "A collection of web tools to make your life easier",
+  "dir": null,
+  "display": "fullscreen",
+  "lang": "English",
+  "name": "Handy Tools | dastasoft",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": null,
+  "related_applications": null,
+  "scope": "/",
+  "short_name": "Handy Tools | dastasoft",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": ["productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "screenshots/blog1.png",
+      "sizes": "1280x800",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/blog2.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ],
+  "iarc_rating_id": null,
+  "icons": [
+    {
+      "src": "icons/maskable_icon_x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable_icon_x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable_icon_x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable_icon_x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable_icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "url": "https://handy-tools.dastasoft.com/"
+}
