@@ -5,6 +5,7 @@ import {
   Heading,
   Textarea,
   Box,
+  useColorModeValue,
 } from '@chakra-ui/react'
 
 import WordCounter from '@/components/WordCounters'
@@ -20,6 +21,8 @@ const WordCount = () => {
     mostUsedWord,
     handleTextChange,
   } = useWordCount()
+
+  const bg = useColorModeValue('whiteAlpha.900', 'gray.800')
 
   return (
     <Flex direction="column">
@@ -39,7 +42,7 @@ const WordCount = () => {
       </SimpleGrid>
       <Textarea
         placeholder="Write here your text"
-        backgroundColor="white"
+        bg={bg}
         value={text}
         rows={9}
         shadow="lg"
@@ -48,7 +51,7 @@ const WordCount = () => {
       <Box
         margin="1rem auto"
         padding="1rem"
-        bg="white"
+        bg={bg}
         width="100%"
         shadow="lg"
         borderRadius="3px"
