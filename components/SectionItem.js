@@ -1,4 +1,4 @@
-import { Link, Heading, Image, Flex } from '@chakra-ui/react'
+import { Box, Link, Heading, Image, Flex } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 export default function SectionItem({ img, title, link, onClick }) {
@@ -17,12 +17,9 @@ export default function SectionItem({ img, title, link, onClick }) {
           shadow="xl"
           cursor="pointer"
         >
-          <Image
-            boxSize={{ base: 200, '2xl': 500, '3xl': 600 }}
-            objectFit="contain"
-            src={img}
-            alt={title}
-          />
+          <Box flex={1}>
+            <Image objectFit="contain" src={img} alt={title} />
+          </Box>
           <Heading fontSize="2xl" fontWeight="bold" textAlign="center">
             {title}
           </Heading>
