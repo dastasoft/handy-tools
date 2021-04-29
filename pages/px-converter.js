@@ -13,6 +13,7 @@ import {
   IconButton,
   Grid,
   GridItem,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons'
 import NextImage from 'next/image'
@@ -54,6 +55,8 @@ export default function PxConverter() {
     rem,
     swapInputs,
   } = usePxConverter()
+  const bg = useColorModeValue('whiteAlpha.900', 'gray.800')
+  const color = useColorModeValue('gray.800', 'whiteAlpha.900')
 
   return (
     <Box>
@@ -61,7 +64,7 @@ export default function PxConverter() {
       <Select
         onChange={onOptionChange}
         defaultValue="pxToREM"
-        {...styles.select}
+        {...styles.select(bg, color)}
       >
         {Object.keys(options).map(optionKey => (
           <option key={optionKey} value={optionKey}>
@@ -83,7 +86,7 @@ export default function PxConverter() {
             name="px"
             value={px}
             onChange={onPxChange}
-            {...styles.input}
+            {...styles.input(bg, color)}
           />
           <Text>PX</Text>
         </GridItem>
@@ -103,7 +106,7 @@ export default function PxConverter() {
               name="rem"
               value={rem}
               onChange={onRemChange}
-              {...styles.input}
+              {...styles.input(bg, color)}
             />
             <Text>REM</Text>
           </GridItem>
@@ -115,7 +118,7 @@ export default function PxConverter() {
               name="em"
               value={em}
               onChange={onEmChange}
-              {...styles.input}
+              {...styles.input(bg, color)}
             />
             <Text>EM</Text>
           </GridItem>
@@ -153,15 +156,17 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  input: {
-    bg: 'whiteAlpha.900',
+  input: (bg, color) => ({
+    bg,
+    color,
     marginRight: '0.5em',
-  },
-  select: {
-    bg: 'whiteAlpha.900',
+  }),
+  select: (bg, color) => ({
+    bg,
+    color,
     maxWidth: '400px',
     margin: '0 auto',
-  },
+  }),
   grid: {
     maxWidth: '600px',
     margin: '1.5em auto',

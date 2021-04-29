@@ -11,6 +11,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useColorModeValue,
+  Box,
 } from '@chakra-ui/react'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import NextLink from 'next/link'
@@ -33,7 +34,7 @@ const Header = ({ h }) => {
       bg={bg}
       h={h}
       justify="space-between"
-      align="center"
+      alignItems="center"
       paddingLeft="1rem"
     >
       <Link as={NextLink} href="/">
@@ -52,7 +53,9 @@ const Header = ({ h }) => {
           <Heading as="h1">Handy Tools</Heading>
         </Flex>
       </Link>
-      <ColorChanger />
+      <Box marginLeft={1} flex={1}>
+        <ColorChanger />
+      </Box>
       {router.route !== '/' && (
         <>
           <Button variant="ghost" onClick={onOpen}>
