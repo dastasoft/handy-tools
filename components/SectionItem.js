@@ -17,7 +17,12 @@ export default function SectionItem({ img, title, link, onClick }) {
           shadow="xl"
           cursor="pointer"
         >
-          {img && <Image src={img} alt={title} />}
+          <Image
+            boxSize={{ base: 200, '2xl': 500, '3xl': 600 }}
+            objectFit="contain"
+            src={img}
+            alt={title}
+          />
           <Heading fontSize="2xl" fontWeight="bold" textAlign="center">
             {title}
           </Heading>
