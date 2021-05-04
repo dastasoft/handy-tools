@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.dastasoft.com</loc>
+    <loc>https://handy-tools.dastasoft.com</loc>
   </url>
 
   <url>
-    <loc>https://blog.dastasoft.com/px-converter</loc>
+    <loc>https://handy-tools.dastasoft.com/px-converter</loc>
   </url>
 
   <url>
-    <loc>https://blog.dastasoft.com/secure-random-password-generator</loc>
+    <loc
+      >https://handy-tools.dastasoft.com/secure-random-password-generator</loc
+    >
   </url>
 
   <url>
-    <loc>https://blog.dastasoft.com/word-count</loc>
+    <loc>https://handy-tools.dastasoft.com/word-count</loc>
   </url>
 </urlset>
